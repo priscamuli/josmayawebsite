@@ -24,15 +24,15 @@ def lipa_na_mpesa(phone_number, amount):
     }
 
     payload = {
-        "BusinessShortCode": utility.MPESA_SHORTCODE,
+        "BusinessShortCode": settings.MPESA_SHORTCODE,
         "Password": password,
         "Timestamp": timestamp,
         "TransactionType": "CustomerPayBillOnline",
         "Amount": amount,
         "PartyA": phone_number,
-        "PartyB": utility.MPESA_SHORTCODE,
+        "PartyB": settings.MPESA_SHORTCODE,
         "PhoneNumber": phone_number,
-        "CallBackURL": utility.CALLBACK_URL,
+        "CallBackURL": settings.CALLBACK_URL,
         "AccountReference": "Ecommerce",
         "TransactionDesc": "Payment for goods"
     }

@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -139,7 +141,13 @@ CSRF_TRUSTED_ORIGINS = [
     'https://6ed5bf233f29.ngrok-free.app'
 ]
 
+from dotenv import load_dotenv
 
+load_dotenv()
 
-# settings.py
-# Use ngrok if testing locally
+MPESA_CONSUMER_KEY = os.getenv("MPESA_CONSUMER_KEY")
+MPESA_CONSUMER_SECRET = os.getenv("MPESA_CONSUMER_SECRET")
+MPESA_SHORTCODE = os.getenv("MPESA_SHORTCODE")
+MPESA_PASSKEY = os.getenv("MPESA_PASSKEY")
+CALLBACK_URL = os.getenv("CALLBACK_URL")
+
