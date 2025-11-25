@@ -142,10 +142,4 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 # settings.py
-MPESA_ENVIRONMENT = 'sandbox'
-MPESA_CONSUMER_KEY = 'n5AjAa0aDxCwSTHATKgdhLQmwZH595G86afXdIfPUgqAim8T'
-MPESA_CONSUMER_SECRET = '0mqqkXWk9ff3E5EGa5gzcBg1bTQGPFfGZwATv5JGzG3XUIYPli61RKGfGt8IGqsZ'
-MPESA_SHORTCODE = '174379'
-MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
-MPESA_TEST_PHONE = '0723774949'
-CALLBACK_URL = 'https://6ed5bf233f29.ngrok-free.app/mpesa/callback/'  # Use ngrok if testing locally
+# Use ngrok if testing locally
