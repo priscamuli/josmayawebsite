@@ -78,13 +78,23 @@ WSGI_APPLICATION = 'ecommerce_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'josmayawebsite',
+        'USER':'josmayawebsite_user',
+        'PASSWORD':'m1Sd0UOxXEm8RXqxec4lN0i22lpC4op0',
+        'HOST':'dpg-d4ivg1obdp1s73c2gjrg-a.oregon-postgres.render.com',
+        'PORT':'5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
