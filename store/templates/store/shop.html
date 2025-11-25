@@ -1,0 +1,88 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}Shop - JOSMAYA COMPUTERS{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4 text-center fw-bold" style="color: var(--dark-blue);">
+  Shop Products
+</h2>
+
+<!-- Search + Filters -->
+<div class="card shadow-sm p-3 mb-4 border-0">
+  <form method="GET" class="row g-3 align-items-end">
+
+    <!-- Search Bar -->
+    <div class="col-md-4">
+      <label class="form-label fw-semibold">Search</label>
+      <input type="text" name="search" class="form-control" placeholder="Search products..."
+             value="{{ request.GET.search }}">
+    </div>
+
+    <!-- Category Filter -->
+<div class="col-md-4">
+  <label class="form-label fw-semibold">Category</label>
+  <select name="category" class="form-select">
+    <option value="">All Categories</option>
+
+    {% for category in categories %}
+      <option value="{{ category.id }}"
+        {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}>
+        {{ category.name }}
+      </option>
+    {% endfor %}
+  </select>
+</div>
+
+
+    <!-- Sorting -->
+    <div class="col-md-4">
+      <label class="form-label fw-semibold">Sort By</label>
+      <select name="sort" class="form-select">
+        <option value="">Default</option>
+        <option value="low-high" {% if request.GET.sort == "low-high" %}selected{% endif %}>Price: Low → High</option>
+        <option value="high-low" {% if request.GET.sort == "high-low" %}selected{% endif %}>Price: High → Low</option>
+        <option value="newest" {% if request.GET.sort == "newest" %}selected{% endif %}>Newest</option>
+      </select>
+    </div>
+
+    <div class="col-12 text-end">
+      <button class="btn btn-primary px-4">Apply</button>
+    </div>
+
+  </form>
+</div>
+
+<!-- Product Grid -->
+<div class="row g-4">
+
+  {% for product in products %}
+  <div class="col-md-3">
+    <div class="card shadow-sm border-0 h-100" style="transition: 0.3s;">
+      
+      <img src="{{ product.image.url }}" width="180" height="180" style="object-fit: cover;"><br>
+
+      <div class="card-body">
+        <h5 class="card-title fw-bold" style="color: var(--dark-blue);">{{ product.name }}</h5>
+        <p class="card-text text-muted">{{ product.description|truncatewords:12 }}</p>
+
+        <p class="fw-bold fs-5" style="color: var(--primary-blue);">Ksh {{ product.price }}</p>
+
+        <a href="{% url 'product_detail' product.id %}" class="btn btn-primary w-20">
+          View Details
+        </a>
+         {% if user.is_authenticated %}
+          | <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary w-20">Add to Cart</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% empty %}
+  <p class="text-center text-muted">No products found.</p>
+  {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>Make Payment</h2>
+<form method="POST">
+  {% csrf_token %}
+  <label for="phone">Phone Number:</label>
+  <input type="text" name="phone" required><br>
+  <label for="amount">Amount:</label>
+  <input type="number" name="amount" required><br>
+  <button type="submit">Pay with M-Pesa</button>
+</form>
+{% endblock %}

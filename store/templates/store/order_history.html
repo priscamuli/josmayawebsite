@@ -1,0 +1,25 @@
+
+{% extends 'store/base.html' %}
+{% load custom_filters %}
+{% block content %}
+<div class="container my-5">
+    <h2>Your Order History</h2>
+
+    {% if orders %}
+      <ul>
+{% for order in orders %}
+    <li style="margin-bottom: 1rem;">
+        <a href="{% url 'order_detail' order.id %}">
+            Order #{{ order.id }} - {{ order.ordered_at|date:"F d, Y - H:i" }} - Total: KES {{ order.total }} - Status: {{ order.status}}
+        </a>
+    </li>
+{% endfor %}
+</ul>
+    {% else %}
+        <p>You have no orders yet.</p>
+    {% endif %}
+
+    <a href="{% url 'shop' %}" class="btn btn-primary">Continue Shopping</a>
+</div>
+
+{% endblock %}

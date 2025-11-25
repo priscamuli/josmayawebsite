@@ -1,0 +1,88 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}Home - JOSMAYA COMPUTERS{% endblock %}
+
+{% block content %}
+
+<!-- Hero / Slider Section -->
+<section class="hero py-5 text-white" 
+         style="background: url('{% static 'images/hero-banner.jpg' %}') no-repeat center center / cover;">
+  <div class="container text-center">
+    <h1 class="display-4 fw-bold">Welcome to Josmaya Computers</h1>
+    <p class="lead">Quality computers, accessories, and tech solutions</p>
+    <a href="{% url 'shop' %}" class="btn btn-primary btn-lg mt-3">Shop Now</a>
+  </div>
+</section>
+
+<!-- Category Shortcuts -->
+<section class="categories py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4" style="color: var(--dark-blue);">Shop by Category</h2>
+    <div class="row g-4 justify-content-center">
+      {% for category in categories %}
+      <div class="col-6 col-md-2 text-center">
+        <a href="{% url 'shop' %}?category={{ category.id }}" class="btn btn-outline-primary w-100 py-3">
+          {{ category.name }}
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Featured / New Arrival Products -->
+<section class="featured-products py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4" style="color: var(--dark-blue);">Featured Products</h2>
+
+    <div class="row g-4">
+      {% for product in products|slice:":8" %}
+      <div class="col-6 col-md-3">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold" style="color: var(--dark-blue);">{{ product.name }}</h5>
+            <p class="text-muted">{{ product.description|truncatewords:10 }}</p>
+            <p class="fw-bold" style="color: var(--primary-blue);">Ksh {{ product.price }}</p>
+            <a href="{% url 'product_detail' product.id %}" class="btn btn-primary w-100">View Details</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Promotions / Special Offers -->
+<section class="promotions py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4" style="color: var(--dark-blue);">Current Offers</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div class="card text-center shadow-sm border-0 p-3">
+          <h5 class="fw-bold">20% off Laptops</h5>
+          <p class="text-muted">Upgrade your tech with our special laptop deals!</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-center shadow-sm border-0 p-3">
+          <h5 class="fw-bold">Bundle Deals</h5>
+          <p class="text-muted">Save more when you buy accessories together.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Josmaya Computers -->
+<section class="about py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-3" style="color: var(--dark-blue);">About Josmaya Computers</h2>
+    <p class="lead mx-auto" style="max-width: 700px;">
+      Josmaya Computers is your trusted partner in computing solutions. We provide high-quality laptops, desktops, accessories, and technical support to help you stay ahead in technology.
+    </p>
+  </div>
+</section>
+
+{% endblock %}

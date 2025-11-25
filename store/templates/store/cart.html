@@ -1,0 +1,46 @@
+{% extends 'store/base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<h2 class="mb-4">Your Cart</h2>
+
+{% if items %}
+  <div class="row">
+    {% for item in items %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="{{ item.product.image.url|default:'/static/img/no-image.png' }}"
+               class="card-img-top"
+               alt="{{ item.product.name }}">
+
+          <div class="card-body">
+            <h5 class="card-title">{{ item.product.name }}</h5>
+            <p class="card-text">
+              Quantity: {{ item.quantity }}<br>
+              Unit Price: KES {{ item.product.price }}<br>
+              Subtotal: KES {{ item.product.price|multiply:item.quantity }}
+            </p>
+
+            <a href="{% url 'remove_from_cart' item.product.id %}" class="btn btn-danger">
+              Remove
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h4>Total: KES {{ total }}</h4>
+
+  <form method="post" action="{% url 'checkout' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Checkout</button>
+  </form>
+
+{% else %}
+  <div class="alert alert-info">Your cart is empty.</div>
+{% endif %}
+
+<a href="{% url 'shop' %}" class="btn btn-secondary mt-3">Continue Shopping</a>
+
+{% endblock %}

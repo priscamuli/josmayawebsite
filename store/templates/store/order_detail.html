@@ -1,0 +1,33 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2>Order #{{ order.id }}</h2>
+    <p><strong>Status:</strong> {{ order.status }}</p>
+    <p><strong>Ordered on:</strong> {{ order.ordered_at|date:"F d, Y - H:i" }}</p>
+    <p><strong>Total:</strong> KES {{ order.total }}</p>
+
+    <hr>
+
+    <h4>Items in this order:</h4>
+    <div class="row">
+        {% for item in items %}
+        <div class="col-md-6 mb-3">
+            <div class="card p-3">
+                <div class="d-flex align-items-center">
+                    <img src="{{ item.product.image.url }}" width="80" class="me-3" alt="{{ item.product.name }}">
+                    <div>
+                        <h5>{{ item.product.name }}</h5>
+                        <p>Quantity: {{ item.quantity }}</p>
+                        <p>Unit Price: KES {{ item.price }}</p>
+                        <p>Subtotal: KES {{ item.subtotal }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'order_history' %}" class="btn btn-secondary mt-3">Back to Orders</a>
+</div>
+{% endblock %}
