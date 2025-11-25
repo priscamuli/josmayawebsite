@@ -23,9 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=h@##ll^6s3rr_-sq%(63*ghisa6!l9$4v&8h4e(o#*91fnjw7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+#DEBUG = True
+DEBUG = False  #during production 
+
+ALLOWED_HOSTS = ['ecommerce_site.onrender.com']
 
 
 # Application definition
@@ -120,6 +122,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT =os.path.join(BASE_DIR,'statcfiles')
 
 
 LOGIN_REDIRECT_URL = 'home'
