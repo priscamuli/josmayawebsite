@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-=h@##ll^6s3rr_-sq%(63*ghisa6!l9$4v&8h4e(o#*91fnjw7
 #DEBUG = True
 DEBUG = False  #during production 
 
-ALLOWED_HOSTS = ['ecommerce_site.onrender.com']
+ALLOWED_HOSTS = ['josmayawebsite.onrender.com']
 
 
 # Application definition
