@@ -1,10 +1,59 @@
 {% extends 'store/base.html' %}
+
 {% block content %}
-<h2>Login</h2>
-<form method="POST">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
-<a href="{% url 'signup' %}">Don't have an account?</a>
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+
+    <!-- Left side: Josmaya info -->
+    <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center" 
+         style="background-color: #005B9F; color: #fff; flex-direction: column;">
+      <h1 class="mb-4" style="color: #FFD700;">Welcome to Josmaya Computers</h1>
+      <p class="px-4 text-center" style="font-size: 1.2rem;">
+        Discover the latest tech products, accessories, and amazing deals. 
+        Josmaya Computers brings quality and affordability to your doorstep.
+      </p>
+      <img src="{% static 'images/josmaya-illustration.png' %}" alt="Josmaya" class="img-fluid mt-4" style="max-width: 70%;">
+    </div>
+
+    <!-- Right side: Login form -->
+    <div class="col-md-6 d-flex align-items-center justify-content-center">
+      <div class="card shadow-sm p-4" style="width: 80%; max-width: 400px;">
+        <h3 class="mb-4 text-center" style="color: #005B9F;">Login</h3>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            {{ form.username.label_tag }}
+            {{ form.username|add_class:"form-control" }}
+          </div>
+          <div class="mb-3">
+            {{ form.password.label_tag }}
+            {{ form.password|add_class:"form-control" }}
+          </div>
+
+          <div class="mb-3 text-end">
+        <a href="{% url 'password_reset' %}" style="color: #FFD700; font-size: 0.9rem;">Forgot password?</a>
+      </div>
+
+          <button type="submit" class="btn w-100" style="background-color: #0093D0; color: #fff;">
+            Login
+          </button>
+        </form>
+
+        <p class="text-center mt-3">
+          Don't have an account? <a href="{% url 'signup' %}" style="color: #FFD700;">Sign up</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
 {% endblock %}
