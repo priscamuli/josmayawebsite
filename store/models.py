@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # New Category model
 class Category(models.Model):
@@ -13,7 +14,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     description = models.TextField()
-    image = models.ImageField(upload_to='products/')
+    image = CloudinaryField('image')  # Cloudinary handles image storage
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
