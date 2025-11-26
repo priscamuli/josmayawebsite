@@ -16,21 +16,21 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 # Create your views here.
-def custom_login(request):
-    if request.user.is_authenticated:
-        return redirect("home")
+# def custom_login(request):
+#     if request.user.is_authenticated:
+#         return redirect("home")
 
-    form = AuthenticationForm(request, data=request.POST or None)
+#     form = AuthenticationForm(request, data=request.POST or None)
 
-    if request.method == "POST":
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect("home")
-        else:
-            messages.error(request, "Invalid username or password.")
+#     if request.method == "POST":
+#         if form.is_valid():
+#             user = form.get_user()
+#             login(request, user)
+#             return redirect("home")
+#         else:
+#             messages.error(request, "Invalid username or password.")
 
-    return render(request, "store/login.html", {"form": form})
+#     return render(request, "store/login.html", {"form": form})
 
 def home(request):
     category_id = request.GET.get('category')
