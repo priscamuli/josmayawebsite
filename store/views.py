@@ -20,20 +20,17 @@ def custom_login(request):
     if request.user.is_authenticated:
         return redirect("home")
 
-    form = AuthenticationForm(request)
+    form = AuthenticationForm(request, data=request.POST or None)
 
     if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            messages.success(request, f"Welcome back, {user.username}!")
             return redirect("home")
         else:
             messages.error(request, "Invalid username or password.")
 
     return render(request, "store/login.html", {"form": form})
-
 
 def home(request):
     category_id = request.GET.get('category')
