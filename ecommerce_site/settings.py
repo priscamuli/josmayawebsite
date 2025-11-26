@@ -103,7 +103,7 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.getenv("CLOUDINARY_API_SECRET"),
 }
 
-MEDIA_URL = '/media/'  # Only used for development convenience
+# MEDIA_URL = '/media/'  # Only used for development convenience
 
 # LOGIN REDIRECTS
 LOGIN_REDIRECT_URL = 'home'
