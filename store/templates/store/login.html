@@ -32,14 +32,14 @@
           {% csrf_token %}
 
           <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" name="username" id="username" class="form-control" placeholder="Enter your username" required>
-          </div>
+  <label class="form-label">Username</label>
+  {{ form.username }}
+</div>
 
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
-          </div>
+<div class="mb-3">
+  <label class="form-label">Password</label>
+  {{ form.password }}
+</div>
 
           <button type="submit" class="btn w-100" style="background-color: #0093D0; color: #fff;">
             Login
