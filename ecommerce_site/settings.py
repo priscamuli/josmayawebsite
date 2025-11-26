@@ -4,10 +4,10 @@ Django settings for ecommerce_site project.
 
 from pathlib import Path
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-# Load environment variables first
-load_dotenv()
+# # Load environment variables first
+# load_dotenv()
 
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
