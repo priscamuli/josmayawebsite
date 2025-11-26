@@ -129,7 +129,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+from dotenv import load_dotenv
 
+load_dotenv()
 import os
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_URL = '/media/'
@@ -158,9 +160,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://josmayawebsite.onrender.com'
 ]
 
-from dotenv import load_dotenv
 
-load_dotenv()
 
 MPESA_CONSUMER_KEY = os.getenv("MPESA_CONSUMER_KEY")
 MPESA_CONSUMER_SECRET = os.getenv("MPESA_CONSUMER_SECRET")
