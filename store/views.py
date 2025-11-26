@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Order, Category, OrderItem
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from .mpesa import lipa_na_mpesa
 from django.http import JsonResponse
@@ -14,6 +14,22 @@ import json
 
 
 # Create your views here.
+
+def custom_login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, f"Welcome back, {user.username}!")
+            return redirect('home')  # Redirect to your home page
+        else:
+            messages.error(request, "Invalid username or password.")
+
+    return render(request, 'store/login.html')
+
 def home(request):
     category_id = request.GET.get('category')
     search_query = request.GET.get('search')
