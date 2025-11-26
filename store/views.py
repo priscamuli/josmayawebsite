@@ -9,26 +9,33 @@ from .mpesa import lipa_na_mpesa
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.contrib.auth.forms import AuthenticationForm
+
 
 
 
 
 # Create your views here.
-
 def custom_login(request):
-    if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+    form = AuthenticationForm()
 
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request, f"Welcome back, {user.username}!")
-            return redirect('home')  # Redirect to your home page
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+
+            user = authenticate(request, username=username, password=password)
+
+            if user:
+                login(request, user)
+                messages.success(request, f"Welcome back, {user.username}!")
+                return redirect("home")
         else:
             messages.error(request, "Invalid username or password.")
 
-    return render(request, 'store/login.html')
+    return render(request, "store/login.html", {"form": form})
 
 def home(request):
     category_id = request.GET.get('category')
