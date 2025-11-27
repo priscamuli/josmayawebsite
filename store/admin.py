@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, OrderItem, Product, Category
+from .models import Order, OrderItem, Product, Category, ContactMessage
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
@@ -30,3 +30,9 @@ class ProductAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('name', 'email', 'phone', 'message')
+    ordering = ('-created_at',)

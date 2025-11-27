@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Order, Category, OrderItem
+from .models import Product, Order, Category, OrderItem, ContactMessage
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
@@ -66,7 +66,23 @@ def product_detail(request, product_id):
     })
 
 def contact(request):
-    return render(request, 'store/contact.html')
+    success = False
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+        
+        # Save the message to the database
+        ContactMessage.objects.create(
+            name=name,
+            email=email,
+            phone=phone,
+            message=message
+        )
+        success = True
+    
+    return render(request, 'store/contact.html', {'success': success})
 
 def shop(request):
     products = Product.objects.all()
