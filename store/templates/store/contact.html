@@ -1,2 +1,29 @@
-<h1>Contact Page</h1>
+{% extends 'store/base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card p-4 shadow" style="max-width: 500px; width: 100%; border-radius: 15px; background-color: #005B9F; color: white;">
+        
+        <!-- Logo -->
+        <div class="text-center mb-4">
+            <img src="{% static 'images/logo.jpg' %}" alt="Josmaya Logo" style="width:120px; height:auto;">
+            <h3 class="mt-3" style="font-weight: bold;">JOSMAYA COMPUTERS</h3>
+            <p>Your trusted Partner in computing Solutions</p>
+        </div>
+
+        <h4 class="mb-3" style="color: #FFD700;">CONTACT US</h4>
+
+        <ul style="list-style: none; padding-left: 0;">
+            <li class="mb-2">📩 josmayacomputers@gmail.com</li>
+            <li class="mb-2">📞 011 746 3721 / 0707 288 894 / 0700 045 550</li>
+            <li class="mb-2">📍 Rausmal House Shop U25, Along Tom Mboya Street, Opp Imenti House</li>
+        </ul>
+
+        <p class="mt-4 text-center" style="font-size: 0.9rem;">
+            Shop with us anytime and enjoy our services.<br>
+            We are ready to serve you.
+        </p>
+    </div>
+</div>
+{% endblock %}
 
