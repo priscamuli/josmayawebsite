@@ -1,0 +1,56 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<div class="contact-container d-flex justify-content-center align-items-center py-5">
+    <div class="contact-card text-white p-4">
+
+        <!-- Logo Section -->
+        <div class="text-center mb-4">
+            <img src="{% static 'images/logo.jpg' %}" 
+                 alt="Josmaya Computers" 
+                 style="width: 140px; height:auto;">
+            <h4 class="mt-3 fw-bold">JOSMAYA COMPUTERS</h4>
+            <p style="font-size: 0.9rem;">Your trusted Partner in computing Solutions</p>
+        </div>
+
+        <!-- Contact Info -->
+        <h5 class="fw-bold mb-3">CONTACT US</h5>
+
+        <p class="mb-2">
+            📧 &nbsp; josmayacomputers@gmail.com
+        </p>
+
+        <p class="mb-2">
+            📞 &nbsp; 011 746 3721 / 0707 288 894 / 0700 045 550
+        </p>
+
+        <p class="mb-2">
+            📍 &nbsp; Rasuma House, Shop U25,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Along Tom Mboya Street<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Opp Imenti House
+        </p>
+
+        <!-- Footer Message -->
+        <p class="mt-4 text-center" style="font-size: 0.9rem;">
+            Shop with us anyday anytime and enjoy our services.<br>
+            We are ready to serve you.
+        </p>
+
+    </div>
+</div>
+
+<style>
+.contact-container {
+    background-color: #ffffff;
+}
+
+.contact-card {
+    background-color: #0064A5;   /* Same blue as poster */
+    width: 90%;
+    max-width: 420px;
+    border-radius: 15px;
+}
+</style>
+
+{% endblock %}

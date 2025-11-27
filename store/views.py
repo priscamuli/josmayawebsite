@@ -65,7 +65,8 @@ def product_detail(request, product_id):
         'related_products': related_products
     })
 
-
+def contact(request):
+    return render(request, 'store/contact.html')
 
 def shop(request):
     products = Product.objects.all()

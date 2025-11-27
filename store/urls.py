@@ -19,6 +19,7 @@ urlpatterns = [
     path('payment/callback/', views.mpesa_callback, name='mpesa_callback'),
     path('shop/', views.shop, name='shop'),
     path('order/<int:order_id>/', views.order_detail, name='order_detail'),
+    path('contact/', views.contact, name='contact'),
 
 
 
