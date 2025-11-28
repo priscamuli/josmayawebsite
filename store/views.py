@@ -35,18 +35,29 @@ from django.contrib.auth.forms import AuthenticationForm
 def home(request):
     category_id = request.GET.get('category')
     search_query = request.GET.get('search')
+    sort_option = request.GET.get('sort')
 
     products = Product.objects.all()
     categories = Category.objects.all()
 
+    # Filter by category
     if category_id:
         products = products.filter(category_id=category_id)
 
+    # Search filter
     if search_query:
         products = products.filter(
             Q(name__icontains=search_query) |
             Q(description__icontains=search_query)
         )
+
+    # Sorting options
+    if sort_option == "low-high":
+        products = products.order_by('price')
+    elif sort_option == "high-low":
+        products = products.order_by('-price')
+    elif sort_option == "newest":
+        products = products.order_by('-id')
 
     return render(request, 'store/home.html', {
         'products': products,
