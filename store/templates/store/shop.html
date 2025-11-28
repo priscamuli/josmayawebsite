@@ -16,8 +16,9 @@
     <!-- Search Bar -->
     <div class="col-md-4">
       <label class="form-label fw-semibold">Search</label>
-      <input type="text" name="search" class="form-control" placeholder="Search products..."
-             value="{{ request.GET.search }}">
+      <input type="text" name="search" class="form-control"
+       placeholder="Search products..."
+       value="{{ request.GET.get('search') }}">
     </div>
 
     <!-- Category Filter -->
