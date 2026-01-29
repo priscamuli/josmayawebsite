@@ -8,7 +8,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from dotenv import load_dotenv
-import dj_database_url
+# import dj_database_url
 
 # # Load environment variables first
 load_dotenv()
@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 SECRET_KEY = 'django-insecure-=h@##ll^6s3rr_-sq%(63*ghisa6!l9$4v&8h4e(o#*91fnjw7'
 DEBUG = False
-ALLOWED_HOSTS = ['josmayawebsite-production.up.railway.app']
+ALLOWED_HOSTS = ['https://josmayawebsite.onrender.com']
 
 # APPLICATIONS
 INSTALLED_APPS = [
@@ -66,33 +66,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ecommerce_site.wsgi.application'
 
-# DATABASE
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'josmaya_database',
-#         'USER': 'josmaya_database_user',
-#         'PASSWORD': 'mqS8i3c4NEsYyoHbKjBH3HmUxt99hX63',
-#         'HOST': 'dpg-d5pjokshg0os739k9lfg-a.oregon-postgres.render.com',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'josmaya_database',
+        'USER': 'josmaya_database_user',
+        'PASSWORD': 'mqS8i3c4NEsYyoHbKjBH3HmUxt99hX63',
+        'HOST': 'dpg-d5pjokshg0os739k9lfg-a.oregon-postgres.render.com',
+        'PORT': '5432',
+    }
+}
 
-if os.environ.get("DATABASE_URL"):
-    DATABASES = {
-        "default": dj_database_url.config(
-            default=os.environ.get("DATABASE_URL"),
-            conn_max_age=600,
-        )
-    }
-else:
-    # Local dev using SQLite (easy)
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
 
 
 # PASSWORD VALIDATION
@@ -132,7 +116,7 @@ LOGOUT_REDIRECT_URL = 'home'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CSRF
-CSRF_TRUSTED_ORIGINS = ['https://josmayawebsite-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://josmayawebsite.onrender.com']
 
 # MPESA SETTINGS
 MPESA_CONSUMER_KEY = os.getenv("MPESA_CONSUMER_KEY")
