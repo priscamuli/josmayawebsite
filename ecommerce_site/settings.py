@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 SECRET_KEY = 'django-insecure-=h@##ll^6s3rr_-sq%(63*ghisa6!l9$4v&8h4e(o#*91fnjw7'
 DEBUG = False
-ALLOWED_HOSTS = ['https://josmayawebsite.onrender.com']
+ALLOWED_HOSTS = ['josmayawebsite.onrender.com']
 
 # APPLICATIONS
 INSTALLED_APPS = [
