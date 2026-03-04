@@ -69,10 +69,10 @@ WSGI_APPLICATION = 'ecommerce_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'josmaya_database',
-        'USER': 'josmaya_database_user',
-        'PASSWORD': 'mqS8i3c4NEsYyoHbKjBH3HmUxt99hX63',
-        'HOST': 'dpg-d5pjokshg0os739k9lfg-a.oregon-postgres.render.com',
+        'NAME': 'josmayadb_iqxd',
+        'USER': 'josmayadb_iqxd_user',
+        'PASSWORD': '4IAgym9lnND0g2cZDEe0gB3OioC3E54h',
+        'HOST': 'dpg-d6judusr85hc73bq84gg-a.oregon-postgres.render.com',
         'PORT': '5432',
     }
 }
