@@ -56,8 +56,8 @@ Make sure you have installed:
 
 #### 1. Clone the repository
 
-- git clone <your-repo-url>
--- cd django-ecommerce
+- git clone https://github.com/priscamuli/josmayawebsite
+- cd ecommerce_site
 
 #### 2. Create a virtual environment
 
